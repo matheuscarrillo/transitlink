@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header" style="text-align: center;">
+					<h2>Cadastro</h2>
+				</div>
+				<div class="card-body">
+				  <form action="{{ url_for('register') }}" method="POST">
+				  		<div class="row">
+							<div class="form-group">
+				    		<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+				    		</div>
+						</div>
+						<div class="row">
+							<div class="form-group">
+						    <input type="text" class="form-control" id="username" name="username" placeholder="Nome" required>
+				    		</div>
+						</div>
+						<div class="row">
+							<div class="form-group">
+						    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
+				    		</div>
+						</div>
+						<div class="row">
+							<div class="form-group">
+						    <input type="text" class="form-control" id="birthday" name="birthday" placeholder="Data de nascimento" required>
+				    		</div>
+						</div>
+						<div class="row">
+							<div class="form-group">
+						    <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required>
+				    		</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+						    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmar senha" required>
+				    		</div>
+						</div>
+						<div class="row">
+							<button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar</button>
+						</div>
+						{% with messages = get_flashed_messages() %}
+							{% if messages %}
+							{% for message in messages %}
+								<div class="alert alert-warning" role="alert">
+								{{ message }}
+								</div>
+							{% endfor %}
+							{% endif %}
+						{% endwith %}
+				  </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

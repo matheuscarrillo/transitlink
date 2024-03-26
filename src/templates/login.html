@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row justify-content-around">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					<div style="text-align: center;">
+						<img class="logo" src="{{url_for('static', filename='logo.png')}}" alt="TransitLink">
+					</div>
+				</div>
+				<div class="card-body">
+					<form action="{{ url_for('login') }}" method="POST">
+						<div class="row">
+							<div class="form-group">
+								<input type="text" class="form-control" name="username" placeholder="Usuário">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group">
+								<input type="password" class="form-control" name="password" placeholder="Senha">
+							</div>
+						</div>
+						<div class="row" style="text-align: center;">
+							<div>
+								<button type="submit" class="btn btn-primary btn-block">Entrar</button>
+							</div>
+						</div>
+						<div class="row" style="text-align: center;">
+							<div>
+							<label>Não possui conta? <a href="{{ url_for('register') }}">Crie agora</a></label>
+							</div>
+						</div>
+					{% with messages = get_flashed_messages() %}
+						{% if messages %}
+						{% for message in messages %}
+							<div class="alert alert-warning" role="alert">
+							{{ message }}
+							</div>
+						{% endfor %}
+						{% endif %}
+					{% endwith %}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
