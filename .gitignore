@@ -1,2 +1,5 @@
 src/.app
 src/app
+src/.venv
+src/.app_new
+src/__pycache__

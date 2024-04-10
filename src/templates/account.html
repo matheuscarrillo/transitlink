@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark border-bottom" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{url_for('home', id=user.id)}}" style="display: inline-block;">
+            <div>
+                <img src="{{url_for('static', filename='logo.png')}}" alt="TransitLink" style="width: 35px;height: 35px; border-radius: 5px;">
+                TransitLink
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ url_for('account', id=user.id) }}">
+                    <i class="bi bi-person"></i> Perfil
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ url_for('favorites', id=user.id) }}">
+                    <i class="bi bi-star"></i> Favoritos
+                </a>
+            </li>
+        </ul>
+        <div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">
+                        <i class="bi bi-door-open"></i> Sair
+                    </a>
+                </li>
+            </ul> 
+        </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header" style="text-align: center;">
+					<h2><i class="bi bi-person"></i> Perfil</h2>
+				</div>
+				<div class="card-body">
+				  <form action="{{ url_for('account', id=user.id) }}" method="POST">
+				  	<div class="row">
+							<div class="form-group">
+				    		<input type="email" class="form-control" id="email" name="email" placeholder="{{user.email}}" disabled>
+				    	</div>
+						</div>
+						<div class="row">
+							<div class="form-group">
+						    <input type="text" class="form-control" id="username" name="username" placeholder="Nome: {{user.name}}" required>
+				    	</div>
+						</div>
+						<div class="row">
+							<div class="form-group">
+						    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF: {{user.cpf}}" disabled>
+				    	</div>
+						</div>
+						<div class="row">
+							<div class="form-group">
+						    <input type="text" class="form-control" id="birthday" name="birthday" placeholder="Data Nascimento: {{user.dt_nascimento}}" required>
+				    	</div>
+						</div>
+						
+						<div class="row" style="text-align: center;">
+							<div>
+								<button type="submit" class="btn btn-primary btn-block">Salvar</button>
+							</div>
+						</div>
+				    
+				  </form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+{% endblock %}

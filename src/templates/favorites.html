@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block content %}
+		<!-- Barra de Navegação -->
+		<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark border-bottom" data-bs-theme="dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{url_for('home', id=user.id)}}" style="display: inline-block;">
+					<div>
+						<img src="{{url_for('static', filename='logo.png')}}" alt="TransitLink" style="width: 35px;height: 35px; border-radius: 5px;">
+						TransitLink
+					</div>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="{{ url_for('account', id=user.id) }}">
+							<i class="bi bi-person"></i> Perfil
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="{{ url_for('favorites', id=user.id) }}">
+							<i class="bi bi-star"></i> Favoritos
+						</a>
+					</li>
+				</ul>
+				<div>
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="{{ url_for('logout') }}">
+								<i class="bi bi-door-open"></i> Sair
+							</a>
+						</li>
+					</ul> 
+				</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="card">
+				<div class="card-header">
+					<div class="row">
+						<div class="col-10" style="text-align: center;">
+							<h2><i class="bi bi-star-fill"></i> Favoritos</h2>
+						</div>
+						<div class="col-2">
+							<div>
+								<!-- Button trigger modal -->
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCadastroEndereco">
+									<i class="bi bi-journal-plus"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-2">
+							<div style="padding-top: 10px;">
+								<button type="button" class="btn btn-primary">
+									<i class="bi bi-pencil-square"></i>
+								</button>
+							</div>
+						</div>
+						<div class="col-10">
+							<div>								
+								<div>
+									Trabalho<br/>
+									R. Volkswagen, 1 - Jabaquara, São Paulo - SP, 04344-902
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-2">
+							<div style="padding-top: 10px;">
+								<button type="button" class="btn btn-primary">
+									<i class="bi bi-pencil-square"></i>
+								</button>
+							</div>
+						</div>
+						<div class="col-10">
+							<div>
+								Casa<br/>
+								Av. Armando Ítalo Setti, 501 - Baeta Neves, São Bernardo do Campo - SP, 09760-280
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="ModalCadastroEndereco" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5"><i class="bi bi-journal-plus"></i> Cadastrar endereço</h1>
+					</div>
+					<div class="modal-body">
+						<div>
+							<form action="/submit" method="post">
+								<div class="row">
+									<div class="form-group">
+										<input type="text" class="form-control" id="tipoEndereco" name="tipoEndereco" placeholder="Tipo de endereço" required>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" required>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Logradouro" required>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<input type="text" class="form-control" id="numero" name="numero" placeholder="Número" required>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" required>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" required>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<select class="form-select">
+											<option selected>Estado</option>
+											<option value="AC">AC</option>
+											<option value="AL">AL</option>
+											<option value="AM">AM</option>
+											<option value="AP">AP</option>
+											<option value="BA">BA</option>
+											<option value="CE">CE</option>
+											<option value="DF">DF</option>
+											<option value="ES">ES</option>
+											<option value="GO">GO</option>
+											<option value="MA">MA</option>
+											<option value="MG">MG</option>
+											<option value="MS">MS</option>
+											<option value="MT">MT</option>
+											<option value="PA">PA</option>
+											<option value="PB">PB</option>
+											<option value="PE">PE</option>
+											<option value="PI">PI</option>
+											<option value="PR">PR</option>
+											<option value="RJ">RJ</option>
+											<option value="RN">RN</option>
+											<option value="RO">RO</option>
+											<option value="RR">RR</option>
+											<option value="RS">RS</option>
+											<option value="SC">SC</option>
+											<option value="SE">SE</option>
+											<option value="SP">SP</option>
+											<option value="TO">TO</option>
+										  </select>
+									</div>
+								</div>
+		
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+{% endblock %}
